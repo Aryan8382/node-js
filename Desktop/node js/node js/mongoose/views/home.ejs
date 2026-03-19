@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Form & List</title>
+</head>
+
+<body>
+    <h2>Add User</h2>
+
+    <form action="/insertData" method="post" enctype="multipart/form-data">
+        <label>
+            Username:
+            <input type="text" name="username" placeholder="Enter username" required>
+        </label>
+        <br><br>
+
+        <label>
+            Password:
+            <input type="text" name="password" placeholder="Enter password" required>
+        </label>
+        <br><br>
+
+        <label>
+            file:
+            <input type="file" name="image" required>
+        </label>
+        <br><br>
+
+        <input type="submit" value="Add User">
+    </form>
+
+    <hr>
+
+    <h2>User List</h2>
+
+<table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Sr No.</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Image</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+
+<tbody>
+<% if (data && data.length > 0) { %>
+
+<% data.map((el, i) => { %>
+
+<tr>
+
+<td><%= i + 1 %></td>
+
+<td><%= el.username %></td>
+
+<td><%= el.password %></td>
+
+<td>
+<img src="/<%= el.image %>" height="100" width="100">
+</td>
+
+<td>
+<a href="/edit/<%= el._id %>">Edit</a>
+</td>
+
+<td>
+<a href="/delete/<%= el._id %>">Delete</a>
+</td>
+
+</tr>
+
+<% }) %>
+
+<% } else { %>
+
+<tr>
+<td colspan="6">No users found</td>
+</tr>
+
+<% } %>
+
+</tbody>
+</table>
+    </table>
+
+</body>
+
+</html>

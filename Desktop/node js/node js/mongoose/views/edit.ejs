@@ -1,0 +1,43 @@
+edit.ejs
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Edit User</title>
+</head>
+
+<body>
+    <h2>Edit User</h2>
+
+    <form action="/update/<%= data._id %>" method="post" enctype="multipart/form-data">
+        <label>
+        Username
+        <input type="text" name="username" value="<%= data.username %>" />
+      </label>
+
+        <br /><br />
+
+        <label>
+        Password
+        <input type="text" name="password" value="<%= data.password %>" />
+      </label>
+
+        <br /><br />
+
+        <label>
+        New Image
+        <input type="file" name="image" />
+      </label>
+
+        <br /><br />
+
+        <img src="/<%= data.image %>" width="120" />
+
+        <br /><br />
+
+        <input type="submit" value="Update User" />
+    </form>
+</body>
+
+</html>

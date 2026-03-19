@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Welcome to EJS</h1>
+
+    <form action="/insertData" method="post">
+        
+        <input type="number" name="id" placeholder="id" required>
+
+        <input type="text" name="name" placeholder="name" required>
+
+        <input type="submit" value="Add">
+    </form>
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Delete</th>
+            <th>Edit</th>
+        </tr>
+
+        <% student.forEach((el, i) => { %>
+        <tr>
+            <td><%= el.id %></td>
+            <td><%= el.name %></td>
+
+            <!-- Correct output tag here -->
+            <td><a href="/delete?id=<%= el.id %>">Delete</a></td>
+
+            <td><a href="/edit?id=<%= el.id %>">Edit</a></td>
+        </tr>
+        <% }) %>
+    </table>
+
+</body>
+
+</html>
